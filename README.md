@@ -60,49 +60,55 @@ storage, camera for QR scanning) that Expo Go doesn't support.
 
 ---
 
+## Download (no build tools needed)
+
+Ready-made installers are on the **[Releases page](https://github.com/Lemxy/MrClod/releases/latest)**:
+
+| Your device | Download this |
+| --- | --- |
+| 🖥️ Windows | `MrClod-setup.exe` (or `.msi`) |
+| 📱 Android phone | `MrClod.apk` |
+| 🍎 iOS / macOS | build from source (see below) — no signed build is published yet |
+
 ## Beginner's guide — getting started in 10 minutes
 
-### 1. What you need
+### 1. Install the desktop app (Windows)
 
-- A computer with [Claude Code](https://claude.com/claude-code) already installed and working.
-- [Node.js](https://nodejs.org) (v18+) on that computer.
-- [Rust](https://www.rust-lang.org/tools/install) on that computer (needed to build the desktop app).
-- Your phone, on the **same Wi-Fi network** as the computer (for local use).
+1. Go to the [Releases page](https://github.com/Lemxy/MrClod/releases/latest).
+2. Download `MrClod-setup.exe`.
+3. Run it and finish the install wizard (Windows may show a SmartScreen
+   warning since the app isn't code-signed — click **More info → Run anyway**).
+4. Launch **MrClod** from the Start menu. It opens a window showing your
+   computer's local IP address, a port (`7878`), a pairing token, and a QR code.
 
-### 2. Run the desktop app
+Requires [Claude Code](https://claude.com/claude-code) already installed and
+working on this computer — MrClod runs the `claude` CLI for you, it doesn't
+replace it.
 
-```sh
-cd desktop
-npm install
-npm run tauri dev
-```
+### 2. Install the mobile app (Android)
 
-A window opens showing your computer's local IP, a port (`7878`), a pairing
-token, and a QR code.
+Android blocks installs from outside the Play Store by default, so:
 
-### 3. Install the mobile app
+1. On your phone, open the [Releases page](https://github.com/Lemxy/MrClod/releases/latest)
+   in a browser (or transfer the file over by USB/cloud storage).
+2. Tap `MrClod.apk` to download it.
+3. Tap the downloaded file to install. If you see **"blocked by Play Protect"**
+   or **"install unknown apps"**, tap **Settings** in that prompt and allow
+   installs from your browser/file manager for this one file, then go back
+   and install it.
+4. Open the **MrClod** app on your phone.
 
-You need a JDK 17 and the Android SDK installed once, then:
+### 3. Pair your phone with the desktop
 
-```sh
-cd mobile
-npm install
-npx expo run:android
-```
-
-This builds and installs the app on a connected phone or emulator. (For iOS,
-use `npx expo run:ios` on a Mac.)
-
-### 4. Pair your phone
-
-Open the mobile app and either:
+Make sure your phone is on the **same Wi-Fi network** as the computer, then in
+the mobile app either:
 - **Scan the QR code** shown in the desktop app, or
 - **Type in manually**: the desktop's IP address, port `7878`, and the pairing token.
 
 That's it — you're connected. Send a message from your phone; it runs on your
 computer through Claude Code, and the reply streams back to you.
 
-### 5. Using it away from home (optional)
+### 4. Using it away from home (optional)
 
 To control your desktop from outside your Wi-Fi network, run an encrypted
 tunnel (e.g. a Cloudflare Tunnel) pointing at port `7878`, and pair the
@@ -110,9 +116,28 @@ mobile app with the tunnel's `wss://` address instead of the LAN IP.
 
 ---
 
-## Building your own install files
+## Building from source (developers / iOS)
 
-**Desktop installer** (`.exe` / `.msi`):
+Prefer to build it yourself, or need an iOS build? You'll need
+[Node.js](https://nodejs.org) (v18+) and [Rust](https://www.rust-lang.org/tools/install).
+
+**Run the desktop app in dev mode:**
+
+```sh
+cd desktop
+npm install
+npm run tauri dev
+```
+
+**Run the mobile app on a connected device/emulator:**
+
+```sh
+cd mobile
+npm install
+npx expo run:android   # or: npx expo run:ios (Mac only)
+```
+
+**Build your own desktop installer** (`.exe` / `.msi`):
 
 ```sh
 cd desktop
@@ -121,7 +146,7 @@ npx tauri build
 
 Output lands in `desktop/src-tauri/target/release/bundle/`.
 
-**Android APK:**
+**Build your own Android APK:**
 
 ```sh
 cd mobile
