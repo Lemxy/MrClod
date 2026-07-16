@@ -1,0 +1,168 @@
+<p align="center">
+  <img src="mrclod_logo.png" width="140" alt="MrClod logo" />
+</p>
+
+<h1 align="center">MrClod</h1>
+<p align="center"><b>Control Claude Code from your phone — from anywhere.</b></p>
+
+<p align="center">
+  <img alt="platform" src="https://img.shields.io/badge/desktop-Windows%20%7C%20macOS%20%7C%20Linux-blue">
+  <img alt="mobile" src="https://img.shields.io/badge/mobile-Android%20%7C%20iOS-green">
+  <img alt="license" src="https://img.shields.io/badge/license-MIT-lightgrey">
+</p>
+
+---
+
+## What is this?
+
+**MrClod** is a remote control for [Claude Code](https://claude.com/claude-code).
+It lets you start a coding task on your computer, walk away, and keep chatting
+with Claude from your phone — over your home Wi-Fi or from anywhere in the
+world via a secure tunnel.
+
+Start a task before you leave for lunch. Get a push notification the moment
+Claude finishes or needs your input. Reply from your phone. Never babysit a
+terminal again.
+
+|                                          |                                                            |
+| ---------------------------------------- | ---------------------------------------------------------- |
+| 🖥️ **Desktop app**                       | Lives on the machine that has Claude Code installed. Runs the actual `claude` CLI. |
+| 📱 **Mobile app**                        | Thin client. Chats, gets notified, sends new prompts.       |
+| 🔔 **Push notifications**                | Know instantly when Claude is done or waiting on you.       |
+| 🌍 **Works from anywhere**               | LAN by default, or tunnel over the internet with an encrypted `wss://` link. |
+| 🌐 **Built-in translation**              | Type in your own language — an interface for it is baked in. |
+| 🔒 **Token-paired & encrypted**          | Your phone and desktop pair with a secret token; traffic can run fully encrypted end to end. |
+
+---
+
+## Features
+
+- **Multiple chat sessions** — run more than one Claude Code conversation at once, switch between them from your phone.
+- **Model switching** — pick which Claude model handles a session, right from the mobile UI.
+- **Permission modes** — `Ask` (Claude requests approval like normal) or `Allow all` (fully autonomous — read the security note below before using this).
+- **Offline message queue** — lose Wi-Fi mid-message? It sends the moment you're back online.
+- **QR-code pairing** — scan a code on the desktop screen instead of typing an IP address.
+- **Chat history** — stored locally on the desktop (SQLite), synced to your phone.
+- **Push-style notifications** — desktop hooks fire the instant Claude stops or needs input.
+
+---
+
+## Supported devices
+
+| Component | Supported on |
+| --- | --- |
+| **Desktop app** | Windows, macOS, Linux (anywhere Claude Code and Rust/Tauri run) |
+| **Mobile app**  | Android (APK, installable today) and iOS (buildable from source) |
+
+The mobile app needs a **custom dev/release build**, not the plain Expo Go
+app — it uses native modules (`expo-blur`, `react-native-reanimated`, secure
+storage, camera for QR scanning) that Expo Go doesn't support.
+
+---
+
+## Beginner's guide — getting started in 10 minutes
+
+### 1. What you need
+
+- A computer with [Claude Code](https://claude.com/claude-code) already installed and working.
+- [Node.js](https://nodejs.org) (v18+) on that computer.
+- [Rust](https://www.rust-lang.org/tools/install) on that computer (needed to build the desktop app).
+- Your phone, on the **same Wi-Fi network** as the computer (for local use).
+
+### 2. Run the desktop app
+
+```sh
+cd desktop
+npm install
+npm run tauri dev
+```
+
+A window opens showing your computer's local IP, a port (`7878`), a pairing
+token, and a QR code.
+
+### 3. Install the mobile app
+
+You need a JDK 17 and the Android SDK installed once, then:
+
+```sh
+cd mobile
+npm install
+npx expo run:android
+```
+
+This builds and installs the app on a connected phone or emulator. (For iOS,
+use `npx expo run:ios` on a Mac.)
+
+### 4. Pair your phone
+
+Open the mobile app and either:
+- **Scan the QR code** shown in the desktop app, or
+- **Type in manually**: the desktop's IP address, port `7878`, and the pairing token.
+
+That's it — you're connected. Send a message from your phone; it runs on your
+computer through Claude Code, and the reply streams back to you.
+
+### 5. Using it away from home (optional)
+
+To control your desktop from outside your Wi-Fi network, run an encrypted
+tunnel (e.g. a Cloudflare Tunnel) pointing at port `7878`, and pair the
+mobile app with the tunnel's `wss://` address instead of the LAN IP.
+
+---
+
+## Building your own install files
+
+**Desktop installer** (`.exe` / `.msi`):
+
+```sh
+cd desktop
+npx tauri build
+```
+
+Output lands in `desktop/src-tauri/target/release/bundle/`.
+
+**Android APK:**
+
+```sh
+cd mobile
+npx expo prebuild -p android   # one-time step
+cd android
+./gradlew assembleRelease
+```
+
+Output: `mobile/android/app/build/outputs/apk/release/app-release.apk`. This
+build is signed with Android's default debug key — fine for your own devices
+or sharing directly, not for a Play Store listing.
+
+---
+
+## ⚠️ Security — please read
+
+Each chat has a **Permissions** setting (mobile: Settings tab; desktop: topbar
+dropdown):
+
+- **Ask** (default, recommended) — normal Claude Code permission handling; risky tool calls need your approval.
+- **Allow all** — runs Claude with `--dangerously-skip-permissions`. **Anyone who
+  has your pairing token gets unattended command execution on your computer.**
+  Use only on networks and tokens you fully control.
+
+Other things worth knowing:
+
+- The desktop's WebSocket server listens on all network interfaces — only run it on networks you trust.
+- Treat the pairing token like a password.
+- Plain `ws://` traffic on LAN is unencrypted. For remote access, always use an encrypted tunnel (`wss://`).
+
+---
+
+## Project layout
+
+```
+desktop/                          Tauri (Rust + JS) desktop app
+mobile/                           Expo / React Native mobile app
+demo-hooks-project/               Example Claude Code hooks that notify the desktop app
+stitch_mrclod_remote_companion/   UI design mockups
+```
+
+## License
+
+MIT — see [LICENSE](LICENSE).

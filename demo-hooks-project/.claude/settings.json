@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl -s -X POST http://127.0.0.1:7879/hook -H \"Content-Type: application/json\" -d \"{\\\"event\\\":\\\"Stop\\\"}\""
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl -s -X POST http://127.0.0.1:7879/hook -H \"Content-Type: application/json\" -d \"{\\\"event\\\":\\\"Notification\\\"}\""
+          }
+        ]
+      }
+    ]
+  }
+}

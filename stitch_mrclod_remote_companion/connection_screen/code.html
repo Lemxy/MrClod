@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MrClod - Connection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#994523",
+                        "on-secondary-container": "#e1a893",
+                        "surface-container-high": "#322824",
+                        "inverse-surface": "#f1dfd9",
+                        "on-secondary-fixed": "#321206",
+                        "primary-container": "#e8825a",
+                        "surface-bright": "#423733",
+                        "on-secondary-fixed-variant": "#663c2c",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#00201d",
+                        "surface-tint": "#ffb59a",
+                        "primary": "#ffb59a",
+                        "surface-variant": "#3d322f",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#a38c84",
+                        "surface": "#1a110e",
+                        "background": "#1a110e",
+                        "surface-container-low": "#231a16",
+                        "primary-fixed": "#ffdbce",
+                        "inverse-on-surface": "#382e2b",
+                        "surface-container-highest": "#3d322f",
+                        "outline-variant": "#55433c",
+                        "on-tertiary": "#003733",
+                        "surface-dim": "#1a110e",
+                        "primary-fixed-dim": "#ffb59a",
+                        "secondary-fixed-dim": "#f4b9a3",
+                        "on-surface-variant": "#dbc1b8",
+                        "tertiary-fixed": "#74f7eb",
+                        "secondary": "#f4b9a3",
+                        "on-primary-container": "#621e00",
+                        "on-primary": "#5a1b00",
+                        "on-primary-fixed-variant": "#7b2f0d",
+                        "on-surface": "#f1dfd9",
+                        "tertiary": "#54dace",
+                        "on-secondary": "#4b2718",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#00504b",
+                        "tertiary-container": "#07b0a5",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#380d00",
+                        "on-background": "#f1dfd9",
+                        "secondary-fixed": "#ffdbce",
+                        "tertiary-fixed-dim": "#54dace",
+                        "on-tertiary-container": "#003c38",
+                        "secondary-container": "#663c2c",
+                        "surface-container": "#271e1a",
+                        "surface-container-lowest": "#140c09"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-margin": "20px",
+                        "xxl": "48px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "code-md": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "code-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "code-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0E0E12;
+            color: #F1DFD9;
+            overflow: hidden;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Pulse animation for the logo glow */
+        @keyframes glow-pulse {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(232, 130, 90, 0.2)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 30px rgba(232, 130, 90, 0.5)); transform: scale(1.02); }
+        }
+
+        .logo-container {
+            animation: glow-pulse 4s ease-in-out infinite;
+        }
+
+        /* Scanning line animation */
+        @keyframes scan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+
+        .scanning-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #E8825A, transparent);
+            width: 100%;
+            position: absolute;
+            animation: scan 3s linear infinite;
+        }
+
+        /* Custom Transition for button */
+        .btn-connect {
+            box-shadow: 0px 4px 20px rgba(232, 130, 90, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-connect:active {
+            transform: scale(0.95);
+        }
+
+        .terminal-text::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .bg-obsidian {
+            background-color: #0E0E12;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-container-margin">
+<!-- Top Navigation Anchor (Suppressed based on Transactional Flow logic) -->
+<!-- As this is a splash/connection screen, the navigation shell is excluded to prioritize the canvas. -->
+<main class="relative w-full max-w-lg flex flex-col items-center justify-center text-center space-y-xl">
+<!-- Decorative Ambient Glow -->
+<div class="absolute -z-10 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
+<!-- Central Logo Section -->
+<div class="relative logo-container flex flex-col items-center">
+<div class="w-32 h-32 md:w-48 md:h-48 mb-6 relative overflow-hidden rounded-full border border-outline-variant/30 bg-surface-container flex items-center justify-center">
+<img alt="MrClod Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Ieknk1DqoPN25lbXyJAr2ZO1kz7Jac5UawH_L28ibVdupel3NBuwSDCBP1b9B2R6Q0Fe2DyD3cDqSgKR6ZtVvszBZ5cSQnW5T-n0gnXlToZ-_yTixoC7ZPN-UEezFdebJ5OPlajf_AwovDn-Teg0QwGnCyRBu6mpQVo7hEmeIwTz6ScCEDOMNLsRrg0J5kGQ-0bj-bwDYgyEkI94urLVvu_3yfK8qYYtdxkQJoxr8h7um729ThJRQQ"/>
+<!-- Scanning Effect Overlay -->
+<div class="scanning-line top-0 left-0"></div>
+</div>
+</div>
+<!-- Headline Content -->
+<div class="space-y-md">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">
+                Ready to code from the couch?
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mx-auto terminal-text">
+                Searching for Claude Code on your local Wi-Fi...
+            </p>
+</div>
+<!-- Status & Button Card -->
+<div class="w-full bg-surface-container border border-outline-variant rounded-xl p-lg flex flex-col items-center space-y-lg shadow-lg">
+<!-- Connection Detail Chips -->
+<div class="flex flex-wrap justify-center gap-sm">
+<div class="h-6 px-3 bg-background border border-outline-variant rounded-full flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">SSID: Studio_Air_5G</span>
+</div>
+<div class="h-6 px-3 bg-background border border-outline-variant rounded-full flex items-center space-x-2">
+<span class="material-symbols-outlined text-[14px] text-primary">router</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Searching 192.168.1.x</span>
+</div>
+</div>
+<!-- Main Action -->
+<button class="btn-connect w-full py-md px-xl bg-primary-container text-background font-bold rounded-xl font-headline-md text-headline-md hover:opacity-90 active:scale-95" id="connectBtn">
+                Connect
+            </button>
+<!-- Secondary Action -->
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors flex items-center space-x-2">
+<span class="material-symbols-outlined text-[18px]">keyboard</span>
+<span>Enter manual IP address</span>
+</button>
+</div>
+<!-- Footer / Version -->
+<div class="pt-xl">
+<p class="font-code-sm text-code-sm text-outline flex items-center space-x-2">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>MrClod v1.0.4-alpha</span>
+</p>
+</div>
+</main>
+<!-- Contextual Micro-interactions -->
+<script>
+        const connectBtn = document.getElementById('connectBtn');
+        
+        connectBtn.addEventListener('click', () => {
+            connectBtn.disabled = true;
+            connectBtn.innerHTML = `
+                <div class="flex items-center justify-center space-x-2">
+                    <svg class="animate-spin h-5 w-5 text-background" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Establishing...</span>
+                </div>
+            `;
+            
+            // Artificial delay to simulate connection
+            setTimeout(() => {
+                connectBtn.classList.remove('bg-primary-container');
+                connectBtn.classList.add('bg-tertiary-container');
+                connectBtn.innerHTML = `
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="material-symbols-outlined">check_circle</span>
+                        <span>Connected</span>
+                    </div>
+                `;
+                
+                // Trigger a soft background transition
+                document.body.style.transition = 'background-color 1s ease';
+                document.body.style.backgroundColor = '#140c09'; 
+            }, 2500);
+        });
+
+        // Floating particles background effect
+        function createParticle() {
+            const particle = document.createElement('div');
+            const size = Math.random() * 2 + 1;
+            particle.style.position = 'fixed';
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.backgroundColor = '#E8825A';
+            particle.style.opacity = Math.random() * 0.3;
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '110vh';
+            particle.style.zIndex = '-1';
+            particle.style.pointerEvents = 'none';
+            document.body.appendChild(particle);
+
+            const duration = Math.random() * 10 + 5;
+            const horizontalMovement = (Math.random() - 0.5) * 100;
+
+            const animation = particle.animate([
+                { transform: 'translateY(0) translateX(0)', opacity: 0 },
+                { transform: `translateY(-110vh) translateX(${horizontalMovement}px)`, opacity: 0.3 },
+                { transform: `translateY(-120vh) translateX(${horizontalMovement * 1.2}px)`, opacity: 0 }
+            ], {
+                duration: duration * 1000,
+                easing: 'linear'
+            });
+
+            animation.onfinish = () => particle.remove();
+        }
+
+        setInterval(createParticle, 500);
+    </script>
+</body></html>

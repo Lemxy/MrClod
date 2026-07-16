@@ -1,0 +1,91 @@
+/*
+  MrClod "Calm Control Room" palette (see DESIGN.md, Stitch: MrClod Remote
+  Agent UI): deep near-black surfaces, warm coral accent, soft teal status.
+*/
+:root {
+  --color-accent: #e8825a;
+  --color-accent-strong: #d66d45;
+  --color-accent-soft: #ffb59a;
+  --color-on-accent: #5a1b00;
+
+  --color-teal: #7bb3b5;
+  --color-teal-soft: #98d0d2;
+  --color-on-teal: #003738;
+
+  --color-bg: #0e0e12;
+  --color-surface: #131317;
+  --color-surface-raised: #1f1f23;
+  --color-surface-raised-2: #2a292e;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-soft: rgba(255, 255, 255, 0.05);
+  --color-text: #e4e1e7;
+  --color-text-muted: #dbc1b8;
+  --color-danger: #ffb4ab;
+  --color-danger-strong: #ff8a80;
+
+  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-display: 'Hanken Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --radius-sm: 12px;
+  --radius-md: 14px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#f1dfd9",
+                        "tertiary": "#54dace",
+                        "inverse-primary": "#994523",
+                        "background": "#1a110e",
+                        "surface-container-high": "#322824",
+                        "primary-fixed": "#ffdbce",
+                        "secondary-fixed": "#ffdbce",
+                        "on-background": "#f1dfd9",
+                        "on-secondary-fixed": "#321206",
+                        "on-secondary-container": "#e1a893",
+                        "surface-container": "#271e1a",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#00504b",
+                        "tertiary-fixed": "#74f7eb",
+                        "surface-bright": "#423733",
+                        "on-primary-fixed": "#380d00",
+                        "primary": "#ffb59a",
+                        "on-secondary-fixed-variant": "#663c2c",
+                        "primary-fixed-dim": "#ffb59a",
+                        "tertiary-fixed-dim": "#54dace",
+                        "on-tertiary-container": "#003c38",
+                        "on-surface-variant": "#dbc1b8",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#55433c",
+                        "inverse-on-surface": "#382e2b",
+                        "on-primary-container": "#621e00",
+                        "surface-container-low": "#231a16",
+                        "surface-container-lowest": "#140c09",
+                        "on-tertiary-fixed": "#00201d",
+                        "error-container": "#93000a",
+                        "surface-variant": "#3d322f",
+                        "on-surface": "#f1dfd9",
+                        "primary-container": "#e8825a",
+                        "on-secondary": "#4b2718",
+                        "on-primary": "#5a1b00",
+                        "tertiary-container": "#07b0a5",
+                        "surface-dim": "#1a110e",
+                        "surface-container-highest": "#3d322f",
+                        "secondary": "#f4b9a3",
+                        "secondary-fixed-dim": "#f4b9a3",
+                        "outline": "#a38c84",
+                        "surface-tint": "#ffb59a",
+                        "secondary-container": "#663c2c",
+                        "on-tertiary": "#003733",
+                        "surface": "#1a110e",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#7b2f0d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "container-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "code-md": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "code-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0E0E12;
+            color: #F4F2ED;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(26, 26, 32, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(163, 140, 132, 0.2);
+        }
+        .success-glow {
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.1);
+        }
+        .task-card {
+            background: #1A1A20;
+            border: 1px solid #26262E;
+        }
+        .success-badge {
+            background: rgba(74, 222, 128, 0.1);
+            color: #4ADE80;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+        @keyframes slideInDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-down {
+            animation: slideInDown 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen overflow-x-hidden">
+<!-- Top AppBar (Predicted Component) -->
+<header class="bg-background dark:bg-background border-b border-outline-variant flex justify-between items-center px-gutter h-16 w-full fixed top-0 z-40">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+<span class="font-headline-md-mobile text-headline-md-mobile font-bold text-primary">MrClod</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity duration-200 active:scale-95" data-icon="sensors">sensors</span>
+</div>
+</header>
+<main class="flex-1 pt-20 pb-24 px-container-margin flex flex-col gap-lg">
+<!-- Push Notification Section -->
+<section class="mt-4 animate-slide-down">
+<div class="glass-panel rounded-xl p-md flex items-start gap-md shadow-lg border-outline-variant">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvT7erP1SjiWaT-o0sJ2jj4cHvOnF9uTWolN5BdQKT3B6YofK1BGa95moQ0E15e7kjx-WPbFK6BWoFbrocn8_RocinVgNrX-ja5mkLuK9QW8f9athsyxOCWzNwtrrCnr3N4cAN--roSmRVKpSFq9gEGLxix3JBA-GfNtjpLdsSrgj5jad_FkAaJjH6Px47IrNpNE4x3l8qsqx-j24AtOy-nqVx9nGBVZJIPtZ0h1lGqOX6XvywYW4mXEqs"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-caps text-label-caps text-on-surface opacity-70">MrClod</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">сейчас</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-tight">
+                        ✅ Claude Code закончил задачу — тёмная тема готова
+                    </p>
+</div>
+</div>
+</section>
+<!-- Success Message Content -->
+<div class="flex flex-col items-center text-center gap-sm mt-md">
+<div class="w-20 h-20 rounded-full bg-tertiary-container flex items-center justify-center success-glow mb-sm">
+<span class="material-symbols-outlined text-[40px] text-on-tertiary" style="font-variation-settings: 'wght' 600;">check</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-[#F4F2ED]">Задача выполнена</h1>
+<p class="font-body-md text-body-md text-on-surface-variant px-xl">
+                Все изменения успешно применены к вашему проекту.
+            </p>
+</div>
+<!-- Summary Card -->
+<section class="task-card rounded-xl p-md flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<h3 class="font-label-caps text-label-caps text-primary opacity-80 uppercase tracking-widest">Результат</h3>
+<p class="font-body-md text-body-md text-on-surface">
+                    Интегрирована новая цветовая схема 'Obsidian Depth' для всех компонентов UI. Скорректированы переменные CSS и типизация тем в TypeScript.
+                </p>
+</div>
+<div class="flex flex-col gap-sm border-t border-outline-variant pt-md">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">Измененные файлы</h3>
+<div class="flex flex-col gap-sm">
+<!-- File Item 1 -->
+<div class="flex items-center justify-between bg-surface-container-low p-sm rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="description">description</span>
+<span class="font-code-md text-code-md">settings.tsx</span>
+</div>
+<span class="success-badge font-code-sm text-code-sm px-2 py-0.5 rounded-full">изменён</span>
+</div>
+<!-- File Item 2 -->
+<div class="flex items-center justify-between bg-surface-container-low p-sm rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="css">css</span>
+<span class="font-code-md text-code-md">theme.css</span>
+</div>
+<span class="success-badge font-code-sm text-code-sm px-2 py-0.5 rounded-full">изменён</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<section class="flex flex-col gap-sm mt-auto pb-4">
+<button class="bg-primary-container text-on-primary-container font-bold py-4 rounded-xl transition-all duration-300 active:scale-[0.98] shadow-[0px_4px_20px_rgba(232,130,90,0.15)] flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="reply">reply</span>
+                Ответить / новый запрос
+            </button>
+<button class="border border-outline-variant text-on-surface py-4 rounded-xl transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+                Посмотреть в чате
+            </button>
+</section>
+</main>
+<!-- Bottom NavBar (Predicted Component) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-4 pb-safe bg-surface-container dark:bg-surface-container border-t border-outline-variant shadow-[0px_-4px_20px_rgba(232,130,90,0.05)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-300 ease-in-out active:scale-90">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-caps text-label-caps">Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all duration-300 ease-in-out active:scale-90">
+<span class="material-symbols-outlined" data-icon="task_alt" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<span class="font-label-caps text-label-caps">Tasks</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-300 ease-in-out active:scale-90">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction: Ripple effect on the primary button
+        document.querySelector('.bg-primary-container').addEventListener('click', function(e) {
+            let x = e.clientX - e.target.offsetLeft;
+            let y = e.clientY - e.target.offsetTop;
+            let ripple = document.createElement('span');
+            ripple.style.position = 'absolute';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.style.width = '0px';
+            ripple.style.height = '0px';
+            ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+            ripple.style.borderRadius = '50%';
+            ripple.style.transform = 'translate(-50%, -50%)';
+            ripple.style.transition = 'all 0.5s ease-out';
+            this.appendChild(ripple);
+            
+            requestAnimationFrame(() => {
+                ripple.style.width = '300px';
+                ripple.style.height = '300px';
+                ripple.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 500);
+        });
+    </script>
+</body></html>

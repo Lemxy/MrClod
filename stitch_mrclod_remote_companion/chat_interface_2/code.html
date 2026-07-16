@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MrClod Chat Interface</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ffb59a",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-primary-fixed-variant": "#7b2f0d",
+                        "secondary": "#f4b9a3",
+                        "secondary-fixed-dim": "#f4b9a3",
+                        "on-secondary-fixed-variant": "#663c2c",
+                        "tertiary": "#54dace",
+                        "surface-container-high": "#322824",
+                        "on-surface": "#f1dfd9",
+                        "inverse-on-surface": "#382e2b",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#55433c",
+                        "primary-container": "#e8825a",
+                        "background": "#0E0E12",
+                        "on-primary": "#5a1b00",
+                        "on-primary-fixed": "#380d00",
+                        "surface-container": "#271e1a",
+                        "tertiary-container": "#07b0a5",
+                        "on-surface-variant": "#dbc1b8",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#54dace",
+                        "surface-dim": "#1a110e",
+                        "inverse-surface": "#f1dfd9",
+                        "inverse-primary": "#994523",
+                        "on-tertiary-fixed-variant": "#00504b",
+                        "primary": "#ffb59a",
+                        "on-error": "#690005",
+                        "surface-variant": "#3d322f",
+                        "surface-container-highest": "#3d322f",
+                        "secondary-fixed": "#ffdbce",
+                        "on-tertiary-container": "#003c38",
+                        "on-background": "#f1dfd9",
+                        "surface": "#1a110e",
+                        "on-secondary-container": "#e1a893",
+                        "tertiary-fixed": "#74f7eb",
+                        "on-primary-container": "#621e00",
+                        "surface-container-lowest": "#140c09",
+                        "secondary-container": "#663c2c",
+                        "on-tertiary": "#003733",
+                        "on-secondary": "#4b2718",
+                        "primary-fixed-dim": "#ffb59a",
+                        "surface-container-low": "#231a16",
+                        "outline": "#a38c84",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#321206",
+                        "surface-bright": "#423733",
+                        "primary-fixed": "#ffdbce"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "16px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xxl": "48px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "container-margin": "20px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "code-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "code-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0E0E12;
+            font-family: 'Inter', sans-serif;
+            color: #F4F2ED;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .message-shadow {
+            box-shadow: 0px 4px 20px rgba(232, 130, 90, 0.1);
+        }
+        .typing-dot {
+            animation: pulse 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes pulse {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #26262E;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden">
+<!-- Top AppBar (from JSON guidance but customized for mobile chat) -->
+<header class="h-16 flex justify-between items-center px-4 shrink-0 bg-surface border-b border-outline-variant z-10">
+<div class="flex items-center gap-4">
+<button class="p-2 -ml-2 rounded-full hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">my-app</span>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary-container shadow-[0_0_8px_#4ADE80]"></div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="terminal">terminal</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Chat Canvas -->
+<main class="flex-1 overflow-y-auto px-container-margin py-lg space-y-lg bg-background">
+<!-- User Message -->
+<div class="flex flex-col items-end gap-sm animate-in slide-in-from-right-4 duration-300">
+<div class="max-w-[85%] bg-primary-container text-on-primary-container p-md rounded-xl rounded-tr-none message-shadow">
+<p class="font-body-md text-body-md leading-relaxed">Добавь тёмную тему на страницу настроек</p>
+</div>
+<div class="flex items-center gap-xs px-2 py-1 bg-surface-container rounded-full border border-outline-variant">
+<span class="font-code-sm text-[10px] text-on-surface-variant uppercase tracking-widest">RU → EN</span>
+</div>
+</div>
+<!-- Assistant Message -->
+<div class="flex flex-col items-start gap-sm animate-in slide-in-from-left-4 duration-300">
+<div class="max-w-[85%] bg-[#1A1A20] text-on-surface p-md rounded-xl rounded-tl-none border border-[#26262E]">
+<p class="font-body-md text-body-md leading-relaxed">Конечно, я обновлю страницу настроек. Вот изменения для settings.tsx:</p>
+</div>
+</div>
+<!-- Assistant Code Block -->
+<div class="flex flex-col items-start gap-sm animate-in slide-in-from-bottom-4 duration-500">
+<div class="w-full max-w-[95%] bg-[#0E0E12] rounded-xl border border-[#26262E] overflow-hidden">
+<!-- Code Header -->
+<div class="flex justify-between items-center px-4 py-2 bg-[#1A1A20] border-b border-[#26262E]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-tertiary-container" style="font-size: 16px;">description</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">settings.tsx</span>
+</div>
+<button class="p-1 rounded hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined text-sm text-on-surface-variant group-active:text-primary" style="font-size: 18px;">content_copy</span>
+</button>
+</div>
+<!-- Code Content -->
+<div class="p-4 font-code-md text-code-md overflow-x-auto whitespace-pre text-on-surface">
+<span class="text-primary-container">const</span> theme = <span class="text-tertiary-container">'dark'</span>;
+<span class="text-primary-container">const</span> settings = { ... };</div>
+</div>
+</div>
+<!-- Typing Indicator -->
+<div class="flex items-center gap-1.5 px-md py-sm bg-[#1A1A20]/50 rounded-full w-fit border border-[#26262E]/50">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container typing-dot"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container typing-dot"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container typing-dot"></div>
+</div>
+</main>
+<!-- Bottom Input Area -->
+<footer class="p-4 bg-background/80 backdrop-blur-md border-t border-outline-variant/30">
+<div class="flex items-center gap-3">
+<!-- Rounded Input Field -->
+<div class="flex-1 relative flex items-center">
+<div class="absolute left-3 flex items-center pointer-events-none">
+<span class="font-code-sm text-code-sm font-bold text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded border border-outline-variant">RU</span>
+</div>
+<input class="w-full h-12 pl-14 pr-12 bg-surface-container rounded-full border border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all outline-none font-body-md text-on-surface placeholder:text-on-surface-variant/50" placeholder="Напишите запрос..." type="text"/>
+<button class="absolute right-3 p-1.5 rounded-full hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">mic</span>
+</button>
+</div>
+<!-- Send Button -->
+<button class="w-12 h-12 flex items-center justify-center bg-primary-container text-on-primary-container rounded-full shadow-[0_4px_16px_rgba(232,130,90,0.3)] active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</footer>
+<!-- No BottomNavBar on chat screen as per Contextual Suppression rules -->
+<script>
+        // Light micro-interaction for input
+        const input = document.querySelector('input');
+        const sendBtn = document.querySelector('button[style*="send"]');
+        
+        input.addEventListener('focus', () => {
+            input.parentElement.classList.add('scale-[1.02]');
+        });
+        
+        input.addEventListener('blur', () => {
+            input.parentElement.classList.remove('scale-[1.02]');
+        });
+
+        // Simple scroll to bottom on load
+        window.addEventListener('load', () => {
+            const main = document.querySelector('main');
+            main.scrollTop = main.scrollHeight;
+        });
+    </script>
+</body></html>

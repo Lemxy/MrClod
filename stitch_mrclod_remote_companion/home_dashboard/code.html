@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#3d322f",
+                        "surface-container-highest": "#3d322f",
+                        "secondary-fixed": "#ffdbce",
+                        "on-tertiary-container": "#003c38",
+                        "on-background": "#f1dfd9",
+                        "primary": "#ffb59a",
+                        "on-error": "#690005",
+                        "inverse-primary": "#994523",
+                        "on-tertiary-fixed-variant": "#00504b",
+                        "tertiary-fixed": "#74f7eb",
+                        "surface": "#1a110e",
+                        "on-secondary-container": "#e1a893",
+                        "primary-fixed-dim": "#ffb59a",
+                        "surface-container-low": "#231a16",
+                        "outline": "#a38c84",
+                        "surface-container-lowest": "#140c09",
+                        "secondary-container": "#663c2c",
+                        "on-tertiary": "#003733",
+                        "on-secondary": "#4b2718",
+                        "on-primary-container": "#621e00",
+                        "on-secondary-fixed": "#321206",
+                        "surface-bright": "#423733",
+                        "primary-fixed": "#ffdbce",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#f4b9a3",
+                        "on-secondary-fixed-variant": "#663c2c",
+                        "tertiary": "#54dace",
+                        "surface-container-high": "#322824",
+                        "on-primary-fixed-variant": "#7b2f0d",
+                        "secondary": "#f4b9a3",
+                        "surface-tint": "#ffb59a",
+                        "on-tertiary-fixed": "#00201d",
+                        "outline-variant": "#55433c",
+                        "on-surface": "#f1dfd9",
+                        "inverse-on-surface": "#382e2b",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#07b0a5",
+                        "surface-container": "#271e1a",
+                        "on-primary": "#5a1b00",
+                        "on-primary-fixed": "#380d00",
+                        "primary-container": "#e8825a",
+                        "background": "#1a110e",
+                        "inverse-surface": "#f1dfd9",
+                        "tertiary-fixed-dim": "#54dace",
+                        "surface-dim": "#1a110e",
+                        "on-surface-variant": "#dbc1b8",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "container-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "code-md": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "code-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0E0E12;
+            color: #F4F2ED;
+            -webkit-font-smoothing: antialiased;
+        }
+        .card-glass {
+            background: #1A1A20;
+            border: 1px solid #26262E;
+        }
+        .coral-glow {
+            box-shadow: 0px 4px 20px rgba(232, 130, 90, 0.15);
+        }
+        .status-dot-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-outline-variant h-16 flex items-center justify-between px-container-margin">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md-mobile font-bold tracking-tight">MacBook-Home</span>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary status-dot-pulse shadow-[0_0_8px_rgba(84,218,206,0.6)]"></div>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+</header>
+<main class="pt-24 px-container-margin space-y-lg">
+<!-- Project Card -->
+<section class="card-glass rounded-xl p-md flex items-center gap-3 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant">folder</span>
+<span class="font-code-md text-code-md text-on-surface-variant">~/projects/my-app</span>
+</section>
+<!-- Status Card (Hero) -->
+<section class="relative card-glass rounded-xl overflow-hidden min-h-[160px] flex flex-col justify-between p-lg coral-glow">
+<!-- Animated Shader Background Layer -->
+<div class="absolute inset-0 z-0 opacity-40">
+
+</div>
+<div class="relative z-10 space-y-xs">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface">Claude Code работает…</h2>
+</div>
+<div class="bg-black/40 rounded-lg p-3 border border-white/5 backdrop-blur-sm">
+<code class="font-code-sm text-code-sm text-primary block truncate">
+                        $ analyzing src/components/Header.tsx...
+                    </code>
+</div>
+</div>
+<div class="relative z-10 flex items-center justify-between mt-lg">
+<span class="text-xs font-medium text-on-surface-variant opacity-70">Начато 2 мин. назад</span>
+<span class="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider">В работе</span>
+</div>
+</section>
+<!-- Done State Preview -->
+<section class="card-glass rounded-xl p-md flex items-center justify-between border-l-4 border-tertiary active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-medium text-on-surface">Готово · ждёт ответа</p>
+<p class="text-[12px] text-on-surface-variant">Fix login button alignment</p>
+</div>
+</div>
+<span class="text-[12px] text-on-surface-variant">14:20</span>
+</section>
+<!-- Translation Toggle -->
+<section class="card-glass rounded-xl p-md space-y-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">translate</span>
+<span class="font-medium text-on-surface">RU ⇄ EN автоперевод</span>
+</div>
+<div class="w-12 h-6 rounded-full bg-primary/30 relative flex items-center px-1">
+<div class="w-4 h-4 rounded-full bg-primary shadow-sm transform translate-x-6 transition-transform"></div>
+</div>
+</div>
+<p class="text-[12px] text-on-surface-variant leading-relaxed">
+                Ваши запросы переводятся на английский перед отправкой для лучшего качества кода.
+            </p>
+</section>
+<!-- Последние задачи List -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Последние задачи</h3>
+<button class="text-primary text-sm font-medium">Все</button>
+</div>
+<div class="space-y-sm">
+<!-- Row 1 -->
+<div class="card-glass rounded-xl p-md flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Оптимизация бандла</span>
+<span class="text-[12px] text-on-surface-variant">Project: core-engine</span>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary text-[10px] font-bold">Готово</span>
+<span class="text-[10px] text-on-surface-variant">12:05</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="card-glass rounded-xl p-md flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Рефакторинг API</span>
+<span class="text-[12px] text-on-surface-variant">Project: my-app</span>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold">В работе</span>
+<span class="text-[10px] text-on-surface-variant">10:45</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="card-glass rounded-xl p-md flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Добавление тестов</span>
+<span class="text-[12px] text-on-surface-variant">Project: ui-kit</span>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary text-[10px] font-bold">Готово</span>
+<span class="text-[10px] text-on-surface-variant">Вчера</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Navigation -->
+<div class="fixed bottom-0 left-0 w-full p-container-margin bg-gradient-to-t from-background via-background to-transparent z-50">
+<button class="w-full h-14 bg-primary text-background font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span>Открыть чат</span>
+</button>
+</div>
+<!-- Bottom Nav Bar Placeholder (Shared Component Logic) -->
+<nav class="fixed bottom-0 left-0 w-full z-40 flex justify-around items-center h-20 px-4 pb-safe bg-surface-container dark:bg-surface-container border-t border-outline-variant shadow-md pointer-events-none opacity-0 md:opacity-100 md:pointer-events-auto">
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full p-3 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:bg-surface-container-high transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">checklist</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:bg-surface-container-high transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">settings</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.card-glass').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

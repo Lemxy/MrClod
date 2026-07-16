@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "MrClod",
+    "slug": "mrclod",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/mrclod_logo.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/mrclod_logo.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "package": "com.mrclod.app"
+    },
+    "web": {
+      "favicon": "./assets/mrclod_logo.png"
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-camera"
+    ]
+  }
+}

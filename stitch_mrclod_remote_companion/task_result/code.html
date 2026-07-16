@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#994523",
+                    "on-secondary-container": "#e1a893",
+                    "surface-container-high": "#322824",
+                    "inverse-surface": "#f1dfd9",
+                    "on-secondary-fixed": "#321206",
+                    "primary-container": "#e8825a",
+                    "surface-bright": "#423733",
+                    "on-secondary-fixed-variant": "#663c2c",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed": "#00201d",
+                    "surface-tint": "#ffb59a",
+                    "primary": "#ffb59a",
+                    "surface-variant": "#3d322f",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#a38c84",
+                    "surface": "#1a110e",
+                    "background": "#1a110e",
+                    "surface-container-low": "#231a16",
+                    "primary-fixed": "#ffdbce",
+                    "inverse-on-surface": "#382e2b",
+                    "surface-container-highest": "#3d322f",
+                    "outline-variant": "#55433c",
+                    "on-tertiary": "#003733",
+                    "surface-dim": "#1a110e",
+                    "primary-fixed-dim": "#ffb59a",
+                    "secondary-fixed-dim": "#f4b9a3",
+                    "on-surface-variant": "#dbc1b8",
+                    "tertiary-fixed": "#74f7eb",
+                    "secondary": "#f4b9a3",
+                    "on-primary-container": "#621e00",
+                    "on-primary": "#5a1b00",
+                    "on-primary-fixed-variant": "#7b2f0d",
+                    "on-surface": "#f1dfd9",
+                    "tertiary": "#54dace",
+                    "on-secondary": "#4b2718",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "tertiary-container": "#07b0a5",
+                    "on-error": "#690005",
+                    "on-primary-fixed": "#380d00",
+                    "on-background": "#f1dfd9",
+                    "secondary-fixed": "#ffdbce",
+                    "tertiary-fixed-dim": "#54dace",
+                    "on-tertiary-container": "#003c38",
+                    "secondary-container": "#663c2c",
+                    "surface-container": "#271e1a",
+                    "surface-container-lowest": "#140c09"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-margin": "20px",
+                    "xxl": "48px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "code-md": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "code-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "code-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0E0E12;
+            color: #F4F2ED;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-glow {
+            box-shadow: 0px 4px 20px rgba(232, 130, 90, 0.1);
+        }
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background: rgba(26, 26, 32, 0.8);
+        }
+        .success-accent {
+            color: #4ADE80;
+        }
+        .coral-button-glow:active {
+            box-shadow: 0px 0px 15px rgba(232, 130, 90, 0.4);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background flex items-center justify-between px-container-margin h-16 border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary">MrClod</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 active:scale-95 transition-transform text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 mb-20 px-container-margin py-xl max-w-2xl mx-auto w-full">
+<!-- Header Section -->
+<div class="flex flex-col items-center text-center mb-xl space-y-md">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant animate-bounce">
+<span class="material-symbols-outlined success-accent text-4xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Task Complete</h2>
+<p class="text-on-surface-variant max-w-sm">The agent has successfully identified and resolved the reported issue in the authentication layer.</p>
+</div>
+<!-- Task Result Card -->
+<div class="bg-[#1A1A20] border border-[#26262E] rounded-xl overflow-hidden custom-glow mb-lg">
+<!-- Summary Header -->
+<div class="p-md border-b border-[#26262E] flex justify-between items-start">
+<div>
+<span class="text-xs font-label-caps text-primary mb-1 block">SUMMARY</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Fixed auth controller bug</h3>
+</div>
+<div class="bg-surface-container text-tertiary px-3 py-1 rounded-full text-xs font-code-sm border border-outline-variant">
+                    ID: 8824-A
+                </div>
+</div>
+<!-- Code Block Section -->
+<div class="bg-[#0E0E12] p-md overflow-x-auto relative">
+<div class="flex items-center gap-2 mb-sm">
+<span class="material-symbols-outlined text-sm text-on-surface-variant" data-icon="description">description</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">src/auth/controller.ts</span>
+</div>
+<pre class="font-code-md text-code-md text-on-secondary-container leading-relaxed"><code><span class="text-tertiary">export const</span> <span class="text-primary">login</span> = <span class="text-tertiary">async</span> (req, res) => {
+  <span class="text-outline italic">// Fixed session timeout bug</span>
+  <span class="text-on-surface">const</span> session = <span class="text-tertiary">await</span> createSession(req.user.id);
+  <span class="text-on-surface">return</span> res.status(<span class="text-primary">200</span>).json({ session });
+}</code></pre>
+</div>
+<!-- Footer Meta -->
+<div class="p-md flex justify-between items-center bg-[#1A1A20]">
+<div class="flex items-center gap-2">
+<div class="bg-surface-container px-2 py-1 rounded border border-outline-variant flex items-center gap-1.5">
+<span class="text-[10px] font-label-caps text-on-surface-variant">RU</span>
+<span class="material-symbols-outlined text-[12px] text-outline" data-icon="arrow_forward">arrow_forward</span>
+<span class="text-[10px] font-label-caps text-on-surface-variant">EN</span>
+</div>
+<span class="text-[11px] text-outline italic">Auto-translated</span>
+</div>
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border border-surface bg-surface-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A futuristic AI avatar portrait, professional digital painting, obsidian skin with glowing amber circuitry, minimalist dark developer aesthetic, sharp focus, cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0jnzHgSCoK6kbGUdkvCbCAy_YtXvSMnIBTJEGuhI02DxF8NOlgTWahOhyyhW9RqOicKpO8Sy4eBB3jNzm8NvNgqTuuJebYHjDnoOK53g-fRyrUY-0LbNfi0D9lxZngPCASoojQhMmf5e68srbwlQ0xbsc8lTsYTuBo96MHTGZLfgW1kK-cyhndUpjVLdKq_RxbKQpJZzqVDFsW8tM_Zq-gAi_jplQltUbJkjigIAzk1O3CDGXRMMSMg"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="flex flex-col gap-4">
+<button class="bg-[#E8825A] text-[#0E0E12] font-bold py-4 px-md rounded-xl flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all coral-button-glow">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span>Send New Request</span>
+</button>
+<button class="border border-[#26262E] text-[#F4F2ED] py-4 px-md rounded-xl flex items-center justify-center gap-2 hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>View Full Log</span>
+</button>
+</div>
+<!-- Background Atmospheric Glow -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[400px] h-[400px] bg-primary/5 blur-[120px] pointer-events-none"></div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-4 pb-safe bg-surface-container border-t border-outline-variant shadow-md rounded-t-xl">
+<!-- Chat Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:bg-surface-container-high transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</a>
+<!-- Tasks Tab (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full p-3 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="checklist" data-weight="fill">checklist</span>
+</a>
+<!-- Settings Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:bg-surface-container-high transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for the success checkmark
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkIcon = document.querySelector('[data-icon="check_circle"]');
+            if (checkIcon) {
+                setTimeout(() => {
+                    checkIcon.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    checkIcon.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        checkIcon.style.transform = 'scale(1)';
+                    }, 200);
+                }, 500);
+            }
+        });
+
+        // Simple ripples or hover states are handled by Tailwind classes
+    </script>
+</body></html>

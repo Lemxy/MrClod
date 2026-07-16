@@ -1,0 +1,18 @@
+node_modules/
+target/
+dist/
+.expo/
+.claude/
+!demo-hooks-project/.claude/
+!demo-hooks-project/.claude/settings.json
+*.log
+.DS_Store
+.env*
+*.local
+
+# generated native folders (Expo prebuild)
+mobile/ios/
+mobile/android/
+
+# Tauri generated schemas
+desktop/src-tauri/gen/schemas/
